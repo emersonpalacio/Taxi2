@@ -38,6 +38,8 @@ namespace Taxi.Web
             
             });
 
+            services.AddTransient<DataContext>();
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
