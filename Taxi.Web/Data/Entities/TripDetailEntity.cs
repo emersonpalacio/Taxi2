@@ -11,8 +11,8 @@ namespace Taxi.Web.Data.Entities
         public int Id { get; set; }
 
         [Display(Name ="Start date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString ="{0:}")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString ="{0: yyyy:MM:dd hh:mm}", ApplyFormatInEditMode =false)]
         public DateTime Date { get; set; }
 
         public DateTime DateLocal => Date.ToLocalTime();

@@ -12,16 +12,16 @@ namespace Taxi.Web.Data.Entities
         public int Id { get; set; }
 
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Start day ")]
-        [DisplayFormat(DataFormatString ="{0: yyyy:MM:dd}", ApplyFormatInEditMode =false)]
+        [DisplayFormat(DataFormatString ="{0: yyyy:MM:dd hh:mm}", ApplyFormatInEditMode =false)]
         public DateTime StartDate { get; set; }
 
         public DateTime StartDateLocal => StartDate.ToLocalTime();
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Display(Name ="End Day")]
-        [DisplayFormat(DataFormatString ="{0: yyyy:MM:dd}", ApplyFormatInEditMode =true)]
+        [DisplayFormat(DataFormatString ="{0: yyyy:MM:dd hh:mm}", ApplyFormatInEditMode =false)]
         public DateTime? EndDate { get; set; }
 
         public DateTime? EndDateLocal => EndDate?.ToLocalTime();
