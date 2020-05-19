@@ -11,21 +11,38 @@ namespace Taxi.Web.Data.Entities
     {
         public int Id { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Start Date")]
-        [DisplayFormat(DataFormatString ="{0: yyyy:MM:dd}", ApplyFormatInEditMode =false)]
-        public DateTime StartDate{ get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime StartDate { get; set; }
 
-        public DateTime StartDateLocalTime => StartDate.ToLocalTime();
+        public DateTime StartDateLocal => StartDate.ToLocalTime();
 
-        [DataType(DataType.Date)]
-        [Display(Name ="End date")]
-        [DisplayFormat(DataFormatString ="{0: yyyy:MM:dd}", ApplyFormatInEditMode =false)]
-        public DateTime EndDate { get; set; }
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Start Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        public DateTime? EndDate { get; set; }
 
-        public DateTime EndDateLocal => EndDate.ToLocalTime();
+        public DateTime? EndDateLocal => EndDate?.ToLocalTime();
 
+        [MaxLength(100, ErrorMessage = "The {0} field must have {1} characters.")]
+        public string Source { get; set; }
 
+        [MaxLength(100, ErrorMessage = "The {0} field must have {1} characters.")]
+        public string Target { get; set; }
+
+        public float Qualification { get; set; }
+        public double SourceLatitude { get; set; }
+        public double SourceLongitude { get; set; }
+        public double TargetLatitude { get; set; }
+
+        public double TargetLongitude { get; set; }
+
+        public string Remarks { get; set; }
+
+        public TaxiEntities Taxi { get; set; }
+
+        public ICollection<TripDetailEntity> TripDetails { get; set; }
 
     }
 }
