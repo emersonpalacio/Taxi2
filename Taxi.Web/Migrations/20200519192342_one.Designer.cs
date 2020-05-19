@@ -10,8 +10,8 @@ using Taxi.Web.Data;
 namespace Taxi.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200519182401_U")]
-    partial class U
+    [Migration("20200519192342_one")]
+    partial class one
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
