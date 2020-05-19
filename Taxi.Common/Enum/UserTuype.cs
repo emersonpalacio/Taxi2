@@ -9,5 +9,6 @@ namespace Taxi.Common.Enum
         Administrado,
         Driver,
         User
+
     }
 }
