@@ -22,9 +22,9 @@ namespace Taxi.Web.Data.Entities
         [DataType(DataType.DateTime)]
         [Display(Name ="End Day")]
         [DisplayFormat(DataFormatString ="{0: yyyy:MM:dd hh:mm}", ApplyFormatInEditMode =false)]
-        public DateTime? EndDate { get; set; }
+        public DateTime EndDate { get; set; }
 
-        public DateTime? EndDateLocal => EndDate?.ToLocalTime();
+        public DateTime EndDateLocal => EndDate.ToLocalTime();
 
         [MaxLength(500, ErrorMessage = "The {0} field must have {1} characters.")]
         public string  Source { get; set; }
