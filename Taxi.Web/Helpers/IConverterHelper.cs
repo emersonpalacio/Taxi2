@@ -11,5 +11,8 @@ namespace Taxi.Web.Helpers
     public interface IConverterHelper
     {
         TaxiResponse ToTaxiResponse(TaxiEntities taxiEntity);
+        TripResponse ToTripResponse(TripEntity tripEntity);
     }
+
+
 }

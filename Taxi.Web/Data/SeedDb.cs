@@ -97,7 +97,7 @@ namespace Taxi.Web.Data
                                                                                         string phone, string address, UserType userType)
 
         {
-            var user = await _userHelpers.GetUserByEmailAsync(email);
+            var user = await _userHelpers.GetUserAsync(email);
             if (user == null)
             {
                 user = new UserEntity {
