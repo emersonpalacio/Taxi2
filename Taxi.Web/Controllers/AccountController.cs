@@ -32,7 +32,7 @@ namespace Taxi.Web.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model )
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -43,19 +43,24 @@ namespace Taxi.Web.Controllers
                     {
                         return Redirect(Request.Query["ReturnUrl"].First());
                     }
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index", "Home");
                 }
 
             }
 
-            ModelState.AddModelError(string.Empty,"Failed to login");
+            ModelState.AddModelError(string.Empty, "Failed to login");
             return View(model);
         }
 
         public async Task<IActionResult> Logout()
         {
             await _userHelpers.LogoutAsync();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult NotAuthorized()
+        {
+            return View();
         }
     }
 }
