@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Taxi.Common.Enum
 {
-    class TripResponse
+     public class TripResponse
     {
         public int Id { get; set; }
         public DateTime StartDate { get; set; }

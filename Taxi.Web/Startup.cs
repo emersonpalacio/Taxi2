@@ -55,6 +55,7 @@ namespace Taxi.Web
 
             services.AddTransient<SeedDb>();
             services.AddScoped<IUserHelpers, UserHelper>();
+            services.AddScoped<IConverterHelper, ConverterHelper>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

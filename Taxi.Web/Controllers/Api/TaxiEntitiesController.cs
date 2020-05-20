@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Taxi.Web.Data;
 using Taxi.Web.Data.Entities;
+using Taxi.Web.Helpers;
 
 namespace Taxi.Web.Controllers.Api
 {
@@ -15,13 +16,16 @@ namespace Taxi.Web.Controllers.Api
     public class TaxiEntitiesController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IConverterHelper _converterHelper;
 
-        public TaxiEntitiesController(DataContext context)
+        public TaxiEntitiesController(DataContext context,
+                                     IConverterHelper converterHelper)
         {
             _context = context;
+            this._converterHelper = converterHelper;
         }
 
-        [HttpGet("{plaque}")]
+        [HttpGet("{Plaque}")]
         public async Task<IActionResult> GetTaxiEntities([FromRoute] string plaque)
         {
             if (!ModelState.IsValid)
@@ -31,7 +35,11 @@ namespace Taxi.Web.Controllers.Api
 
             plaque = plaque.ToUpper();
             TaxiEntities taxiEntities = await _context.Taxis
+                               .Include(t => t.User )
                                .Include(t => t.Trips)
+                               .ThenInclude(t => t.TripDetails)
+                               .Include(t => t.Trips)
+                               .ThenInclude(tr=> tr.User )
                                .FirstOrDefaultAsync(t => t.Plaque == plaque);
 
             if (taxiEntities == null)
@@ -39,14 +47,11 @@ namespace Taxi.Web.Controllers.Api
                 _context.Taxis.Add(new TaxiEntities { 
                   Plaque =plaque
                 });
-
                 await _context.SaveChangesAsync();
                 taxiEntities = await _context.Taxis.FirstOrDefaultAsync(t => t.Plaque == plaque);
             }
 
-            return Ok(taxiEntities);
-        }   
-
-        
+            return Ok(_converterHelper.ToTaxiResponse(taxiEntities));
+        }           
     }
 }

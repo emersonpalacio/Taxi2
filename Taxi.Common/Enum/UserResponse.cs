@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Taxi.Common.Enum
 {
-    class UserResponse
+    public class UserResponse
     {
         public string Id { get; set; }
         public string Email { get; set; }

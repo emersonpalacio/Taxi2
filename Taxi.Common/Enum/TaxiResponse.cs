@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Taxi.Common.Enum
 {
-    class TaxiResponse
+    public class TaxiResponse
     {
         public int Id { get; set; }
         public string Plaque { get; set; }
