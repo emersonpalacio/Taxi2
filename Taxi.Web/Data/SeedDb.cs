@@ -114,6 +114,9 @@ namespace Taxi.Web.Data
                 await _userHelpers.AddUserAsync(user,"123456");
                 await _userHelpers.AddUserToRoleAsync(user, userType.ToString());
 
+
+                var token = await _userHelpers.GenerateEmailConfirmationTokenAsync(user);
+                await _userHelpers.ConfirmEmailAsync(user, token);
             }
 
             return user;

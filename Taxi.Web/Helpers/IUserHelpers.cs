@@ -22,6 +22,13 @@ namespace Taxi.Web.Helpers
         Task<UserEntity> AddUserAsync(AddUserViewModel model, string path);
         Task<IdentityResult> ChangePasswordAsync(UserEntity user, string oldPassword, string newPassword);
         Task<IdentityResult> UpdateUserAsync(UserEntity user);
+        Task<SignInResult> ValidatePasswordAsync(UserEntity user, string password);
+
+        Task<string> GenerateEmailConfirmationTokenAsync(UserEntity user);
+
+        Task<IdentityResult> ConfirmEmailAsync(UserEntity user, string token);
+
+
 
 
     }
