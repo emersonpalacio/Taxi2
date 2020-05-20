@@ -26,7 +26,7 @@ namespace Taxi.Web.Data
             await _context.Database.EnsureCreatedAsync();
             await CheckTaxisAsync();
             await CheckRolesAsync();
-            var admin = await CheckUserAsync("1010", "Emerson", "Palacio", "emersonpalaciootalvaro5@gmail.com", "350 634 2747", "Cll34#56-6", UserType.Admin);
+            var admin = await CheckUserAsync("1010", "Emerson", "Palacio", "emersonpalaciootalvaro@gmail.com", "350 634 2747", "Cll34#56-6", UserType.Admin);
             var driver = await CheckUserAsync("2020", "sara", "palacio", "sara@yopmail.com", "350 634 2747", "Cll56#45-67", UserType.Driver);
             var user1 = await CheckUserAsync("3030", "emmanuel", "palacio", "emmanuel@yopmail.com", "350 634 2747", "Crr67#45-78", UserType.User);
             var user2 = await CheckUserAsync("4040", "rubiela", "gaviria", "rubiela@yopmail.com", "350 634 2747", "Crr45#78-9", UserType.User);
@@ -42,7 +42,7 @@ namespace Taxi.Web.Data
                  _context.Taxis.Add(new TaxiEntities { 
                   Plaque="TYD123",
                       Trips= new List<TripEntity> {new TripEntity{ 
-                                   StartDate = DateTime.Now,
+                                   StartDate = DateTime.UtcNow,
                                    EndDate = DateTime.UtcNow.AddMinutes(30),
                                    Qualification = 3.5f,
                                    Source = "Robledo",
